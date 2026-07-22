@@ -70,9 +70,9 @@ export function Navbar() {
             href="#home"
             className="flex items-center gap-2 px-3 py-2 rounded-xl transition-transform duration-300 hover:scale-105"
           >
-            <span className="h-7 w-7 rounded-lg bg-gradient-to-br from-orange to-orange-600 flex items-center justify-center text-white text-xs font-bold font-heading">
-              R
-            </span>
+            <svg className="h-5 w-5 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 2L22 12L12 22L2 12Z" />
+            </svg>
             <span className="text-sm font-bold text-navy font-heading hidden sm:block">
               Ridho
             </span>

@@ -24,7 +24,7 @@ export function ShowcaseCard({
   projectName = "Muhammad Ridho",
   projectCategory = "Fullstack Developer & UI/UX Enthusiast",
   projectDescription = "I'm a fresh graduate from Universitas Syiah Kuala who enjoys transforming ideas into modern web applications. My focus lies in Fullstack Development and UI/UX Design, where functionality meets thoughtful user experience.",
-  projectOverview = "Tech & Design — 2022 to 2026",
+  projectOverview = "Tech & Design",
   clientName = "Universitas Syiah Kuala",
   projectDuration = "2022 — 2026",
   toolsUsed = "Next.js, TypeScript, TailwindCSS",
