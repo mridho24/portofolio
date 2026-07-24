@@ -1,3 +1,5 @@
+> ⚠️ **Update:** Untuk section "Recent Project", pendekatan di file ini **tidak dipakai secara terpisah** karena bentrok dengan efek pinned horizontal scroll gallery dari GSAP ScrollTrigger. Ide "index/nama project ter-highlight" dari konsep ini sudah diintegrasikan langsung ke dalam `prompt-gsap-scrolltrigger.md` (bagian 5), dikontrol oleh progress scroll — bukan oleh hover mouse. File ini disimpan sebagai referensi konsep saja, atau bisa dipakai ulang di section lain yang murni hover-based (misal daftar klien/testimoni terpisah).
+
 # Prompt: List Project dengan Efek "Image on Hover"
 
 Komponen yang kamu maksud namanya **"Image on Text Hover"** — perilakunya:

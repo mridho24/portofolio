@@ -94,26 +94,49 @@ Saya sudah lihat referensi decathlonyestalgia.com — situs itu punya nuansa scr
 > ```
 > Efek: angka "566.12k" dan "256.12k" menghitung naik dari 0 saat section muncul di layar (hanya sekali, `once: true`), bar chart tumbuh dari bawah satu-satu.
 >
-> ### 5. Recent Project — Pinned Horizontal Scroll Gallery
+> ### 5. Recent Project — Pinned Horizontal Scroll Gallery (dengan Index/Nama Project Tersinkron)
 > ```js
 > let sections = gsap.utils.toArray(".project-panel");
+> let totalPanels = sections.length;
+>
 > gsap.to(sections, {
->   xPercent: -100 * (sections.length - 1),
+>   xPercent: -100 * (totalPanels - 1),
 >   ease: "none",
 >   scrollTrigger: {
 >     trigger: ".project-gallery",
 >     pin: true,
 >     scrub: 1,
 >     snap: {
->       snapTo: 1 / (sections.length - 1),
+>       snapTo: 1 / (totalPanels - 1),
 >       duration: { min: 0.2, max: 0.5 },
 >       ease: "power1.inOut",
 >     },
 >     end: () => "+=" + document.querySelector(".project-gallery").offsetWidth,
+>     onUpdate: (self) => {
+>       // progress 0..1 dikonversi jadi index panel yang sedang aktif
+>       const activeIndex = Math.round(self.progress * (totalPanels - 1));
+>       updateActivePanelUI(activeIndex);
+>     },
 >   },
 > });
+>
+> function updateActivePanelUI(index) {
+>   // update state index aktif (React: setActiveIndex(index), vanilla: toggle class)
+>   document.querySelectorAll(".panel-index-item").forEach((el, i) => {
+>     el.classList.toggle("is-active", i === index);
+>   });
+> }
 > ```
 > Efek: section "Recent Project" di-pin, lalu scroll vertikal user "dikonversi" jadi pergerakan horizontal antar thumbnail project (seperti menggeser galeri ke samping), dengan snap ke tiap project agar berhenti rapi — ini elemen paling "signature" ala referensi kamu.
+>
+> **Index/nama project tersinkron (pengganti list hover terpisah):**
+> - Tambahkan panel index kecil (fixed, biasanya di pojok kiri-bawah atau kanan-bawah gallery) berisi list singkat semua nama project + nomor urut (01, 02, 03, ...), mirip komponen "Image on Text Hover" tapi **dikontrol oleh progress scroll horizontal, bukan oleh hover mouse**
+> - Item yang index-nya sama dengan `activeIndex` (dari `onUpdate` di atas) diberi style aktif: opacity 100%, teks jadi bold/warna aksen orange, sedikit translateX sebagai indikator; item lain redup (opacity ~0.4)
+> - Transisi antar state aktif/non-aktif pakai `gsap.to()` singkat (duration 0.3s, ease "power2.out") supaya perubahan highlight terasa halus, bukan langsung patah
+> - Opsional: index item ini juga bisa diklik untuk "lompat" ke panel tersebut — hitung posisi scroll yang sesuai lalu gunakan `ScrollTrigger.getById()` atau `scrollTo` plugin GSAP untuk animasikan scroll ke posisi itu
+> - Di mobile (dimana horizontal scroll biasanya diganti jadi swipe/scroll biasa), index ini tetap berguna sebagai progress dots/pagination sederhana di bawah gallery
+>
+> Dengan pendekatan ini, kamu tetap dapat "daftar nama project yang ter-highlight" seperti keinginan awal, tapi terintegrasi dalam satu interaksi scroll yang sama — tidak bentrok dengan efek pin horizontal.
 >
 > ### 6. CTA/Closing Section — Reveal + Magnetic Button
 > ```js
