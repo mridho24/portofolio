@@ -95,6 +95,7 @@ export function Button({
         className="block"
         target={target}
         rel={rel}
+        onClick={onClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
