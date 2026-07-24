@@ -20,7 +20,7 @@ interface ShowcaseCardProps {
 }
 
 export function ShowcaseCard({
-  projectThumbnail = "/images/profile.jpeg",
+  projectThumbnail = "/images/cardprofile.jpeg",
   projectName = "Muhammad Ridho",
   projectCategory = "Fullstack Developer & UI/UX Enthusiast",
   projectDescription = "I'm a fresh graduate from Universitas Syiah Kuala who enjoys transforming ideas into modern web applications. My focus lies in Fullstack Development and UI/UX Design, where functionality meets thoughtful user experience.",
