@@ -50,7 +50,6 @@ export function AnimationsProvider({ children }: { children: React.ReactNode }) 
         .to(".hero-badge-1",      { y: -60, x: 20, opacity: 0, scale: 0.8, ease: "power2.in" }, 0.05)
         .to(".hero-badge-2",      { y: -40, x: -20, opacity: 0, scale: 0.8, ease: "power2.in" }, 0.08)
         .to(".hero-code-icon",    { opacity: 0, scale: 0.5, ease: "power2.in" }, 0.1)
-        .to(".hero-badge-item",   { y: -15, opacity: 0, stagger: 0.04, ease: "power2.in" }, 0.2)
         .to(".hero-decor-dot",    { scale: 0, opacity: 0, stagger: 0.03, ease: "power2.in" }, 0.1)
         .to(".hero-blob",         { scale: 0.7, opacity: 0, ease: "power1.inOut" }, 0)
         .to(".hero-content-left", { x: -40, ease: "power1.inOut" }, 0)
@@ -121,127 +120,9 @@ export function AnimationsProvider({ children }: { children: React.ReactNode }) 
         x: -50, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out", immediateRender: false,
       })
 
-      // ═══════════════════════════════════════════════════════════
-      // STATS / MY JOURNEY — very slow scrub-based reveal
-      //
-      // Each component animates in as you slowly scroll through
-      // the section. Uses scrub: 2 so the animation pace exactly
-      // matches how fast the user scrolls — visible and deliberate.
-      // ═══════════════════════════════════════════════════════════
-
-      // Left card (certificates) — slides in from left
-      gsap.from(".stats-card", {
-        scrollTrigger: {
-          trigger: ".stats-section",
-          start: "top 90%",
-          end: "top 30%",
-          scrub: 2,
-          invalidateOnRefresh: true,
-        },
-        x: -120,
-        y: 60,
-        opacity: 0,
-        rotation: -4,
-        scale: 0.9,
-        ease: "power2.out",
-        immediateRender: false,
-      })
-
-      // The floating badge inside the card — tiny delay offset
-      gsap.from(".stats-section .absolute.-bottom-6", {
-        scrollTrigger: {
-          trigger: ".stats-section",
-          start: "top 80%",
-          end: "top 20%",
-          scrub: 2,
-          invalidateOnRefresh: true,
-        },
-        y: 40,
-        opacity: 0,
-        scale: 0.7,
-        ease: "back.out(2)",
-        immediateRender: false,
-      })
-
-      // Right heading — slides in from right, slow scrub
-      gsap.from(".stats-right-content span", {
-        scrollTrigger: {
-          trigger: ".stats-section",
-          start: "top 85%",
-          end: "top 40%",
-          scrub: 2,
-          invalidateOnRefresh: true,
-        },
-        x: 80,
-        opacity: 0,
-        ease: "power2.out",
-        immediateRender: false,
-      })
-
-      gsap.from(".stats-right-content h2", {
-        scrollTrigger: {
-          trigger: ".stats-section",
-          start: "top 80%",
-          end: "top 30%",
-          scrub: 2,
-          invalidateOnRefresh: true,
-        },
-        x: 100,
-        y: 30,
-        opacity: 0,
-        ease: "power3.out",
-        immediateRender: false,
-      })
-
-      gsap.from(".stats-right-content p", {
-        scrollTrigger: {
-          trigger: ".stats-section",
-          start: "top 75%",
-          end: "top 25%",
-          scrub: 2.5,
-          invalidateOnRefresh: true,
-        },
-        x: 80,
-        opacity: 0,
-        ease: "power2.out",
-        immediateRender: false,
-      })
-
-      // Highlight cards — stagger into view from right, very slow
-      const highlightCards = gsap.utils.toArray<HTMLElement>(".stats-right-content .grid > div")
-      highlightCards.forEach((card, i) => {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: ".stats-section",
-            start: `top ${72 - i * 8}%`,
-            end: `top ${20 - i * 5}%`,
-            scrub: 2,
-            invalidateOnRefresh: true,
-          },
-          x: 100,
-          y: 30,
-          opacity: 0,
-          scale: 0.85,
-          ease: "power3.out",
-          immediateRender: false,
-        })
-      })
-
-      // CTA button at bottom — last to arrive
-      gsap.from(".stats-right-content a", {
-        scrollTrigger: {
-          trigger: ".stats-section",
-          start: "top 40%",
-          end: "top -10%",
-          scrub: 2,
-          invalidateOnRefresh: true,
-        },
-        y: 60,
-        opacity: 0,
-        scale: 0.8,
-        ease: "back.out(1.5)",
-        immediateRender: false,
-      })
+      // ═══════════════════════════════════════
+      // STATS / MY JOURNEY — Normal entrance (no scrub trigger)
+      // ═══════════════════════════════════════
 
       // ═══════════════════════════════════════════════════════════
       // PROJECTS — Sticky 3D Stack animation
