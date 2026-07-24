@@ -6,8 +6,6 @@ import { AboutSection } from "@/components/sections/AboutSection"
 import { StatsSection } from "@/components/sections/StatsSection"
 import { ProjectsSection } from "@/components/sections/ProjectsSection"
 import { CTASection } from "@/components/sections/CTASection"
-import { Reveal } from "@/components/ui/Reveal"
-import { SectionDivider } from "@/components/ui/SectionDivider"
 
 export default function Home() {
   return (
@@ -15,29 +13,11 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-
-        <SectionDivider from="bg-peach" to="bg-white" />
-        <Reveal>
-          <ServicesSection />
-        </Reveal>
-
-        <SectionDivider from="bg-white" to="bg-peach" />
-        <Reveal>
-          <AboutSection />
-        </Reveal>
-
-        <SectionDivider from="bg-peach" to="bg-white" />
-        <Reveal>
-          <StatsSection />
-        </Reveal>
-
-        <Reveal>
-          <ProjectsSection />
-        </Reveal>
-
-        <Reveal>
-          <CTASection />
-        </Reveal>
+        <ServicesSection />
+        <AboutSection />
+        <StatsSection />
+        <ProjectsSection />
+        <CTASection />
       </main>
       <Footer />
     </>

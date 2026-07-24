@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Poppins, Inter } from "next/font/google"
 import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar"
 import { BackToTop } from "@/components/ui/BackToTop"
+import { AnimationsProvider } from "@/components/AnimationsProvider"
 import "./globals.css"
 
 const poppins = Poppins({
@@ -34,7 +35,9 @@ export default function RootLayout({
     >
       <body className="min-h-screen flex flex-col antialiased">
         <ScrollProgressBar />
-        {children}
+        <AnimationsProvider>
+          {children}
+        </AnimationsProvider>
         <BackToTop />
       </body>
     </html>
