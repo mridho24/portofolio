@@ -7,8 +7,9 @@ import { Button } from "@/components/ui/Button"
 
 const links = [
   { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
+  { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Projects", href: "#projects" },
 ]
 
 const serviceSubmenu = [
