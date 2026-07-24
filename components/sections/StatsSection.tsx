@@ -7,7 +7,7 @@ const certificates = [
   {
     title: "Best Capstone Project",
     issuer: "Coding Camp 2025 - University",
-    src: "/certificates/%5BCoding%20Camp%202025%20-%20University%5D%20Best%20Capstone%20Project.jpg",
+    src: "/certificates/Coding-Camp-2025---University-Best-Capstone-Project.jpg",
     type: "image" as const,
     color: "from-orange/20 to-yellow-400/20",
     dot: "bg-orange",
@@ -15,7 +15,7 @@ const certificates = [
   {
     title: "Graduation Letter",
     issuer: "Coding Camp 2025",
-    src: "/certificates/%5BCoding%20Camp%202025%5D%20Graduation%20Letter.pdf",
+    src: "/certificates/Coding-Camp-2025-Graduation-Letter.pdf",
     type: "pdf" as const,
     color: "from-emerald-400/20 to-teal-400/20",
     dot: "bg-emerald-500",
@@ -51,14 +51,14 @@ export function StatsSection() {
 
           {/* Left — Certificate showcase */}
           {/* Extra bottom padding so the floating badge is not clipped */}
-          <div className="pb-8">
-            <div className="stats-card relative rounded-[28px] bg-navy p-8 shadow-2xl">
+          <div>
+            <div className="stats-card relative rounded-[28px] bg-navy p-8 shadow-2xl overflow-hidden">
               {/* Decorative circles */}
               <div className="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-white/5 pointer-events-none" />
               <div className="absolute -bottom-8 -left-8 h-28 w-28 rounded-full bg-white/3 pointer-events-none" />
 
               <div className="relative">
-                <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center justify-between mb-6">
                   <div>
                     <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">
                       Achievements
@@ -66,7 +66,7 @@ export function StatsSection() {
                     <p className="text-white font-bold font-heading">Certificates</p>
                   </div>
                   <span className="rounded-full bg-orange/20 border border-orange/30 px-3 py-1 text-[11px] font-bold text-orange">
-                    {certificates.length} Total
+                    {certificates.length} Total Certificates
                   </span>
                 </div>
 
@@ -99,19 +99,19 @@ export function StatsSection() {
                     </button>
                   ))}
                 </div>
-              </div>
 
-              {/* Floating badge */}
-              <div className="absolute -bottom-6 -left-4 md:-left-8 rounded-2xl bg-white px-5 py-4 shadow-floating">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-orange-50 to-yellow-50">
-                    <svg className="h-5 w-5 text-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                {/* Integrated Latest Achievement Banner */}
+                <div className="mt-6 flex items-center gap-3.5 rounded-2xl bg-white/6 p-4 border border-white/10 backdrop-blur-md">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange to-amber-500 text-white shadow-md">
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.504-1.125-1.125-1.125h-6.75a1.125 1.125 0 01-1.125-1.125V18.75m9 0H7.5" />
                     </svg>
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-navy font-heading">Latest</p>
-                    <p className="text-[10px] text-muted">Best Capstone Project</p>
+                    <span className="inline-block rounded-full bg-orange/20 px-2 py-0.5 text-[9px] font-extrabold text-orange uppercase tracking-widest mb-0.5">
+                      Latest Award
+                    </span>
+                    <p className="text-xs font-bold text-white font-heading">Best Capstone Project 2025</p>
                   </div>
                 </div>
               </div>
