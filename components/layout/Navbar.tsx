@@ -57,6 +57,31 @@ export function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [])
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) return
+    e.preventDefault()
+    setMenuOpen(false)
+    setDropdownOpen(false)
+
+    const targetId = href.replace("#", "")
+    if (targetId === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      return
+    }
+
+    const targetEl = document.getElementById(targetId)
+    if (targetEl) {
+      const navOffset = 80
+      const elementPosition = targetEl.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - navOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      })
+    }
+  }
+
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
       <nav
@@ -69,6 +94,7 @@ export function Navbar() {
         <div className="flex items-center gap-1 px-3 py-1.5">
           <a
             href="#home"
+            onClick={(e) => handleNavClick(e, "#home")}
             className="flex items-center gap-2 px-3 py-2 rounded-xl transition-transform duration-300 hover:scale-105"
           >
             <svg className="h-5 w-5 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
@@ -91,6 +117,7 @@ export function Navbar() {
                 >
                   <a
                     href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className={cn(
                       "block px-3.5 py-2 rounded-xl text-[13px] font-medium transition-all duration-200",
                       active === link.href.slice(1)
@@ -113,6 +140,7 @@ export function Navbar() {
                           <a
                             key={item.label}
                             href={item.href}
+                            onClick={(e) => handleNavClick(e, item.href)}
                             className="block px-3.5 py-2.5 rounded-xl text-[13px] font-medium text-navy/80 hover:text-navy hover:bg-navy/5 transition-all duration-200"
                           >
                             {item.label}
@@ -126,6 +154,7 @@ export function Navbar() {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className={cn(
                       "block px-3.5 py-2 rounded-xl text-[13px] font-medium transition-all duration-200",
                       active === link.href.slice(1)
@@ -141,7 +170,12 @@ export function Navbar() {
           </ul>
 
           <div className="hidden md:block ml-2">
-            <Button href="#contact" variant="primary" className="px-5 py-2 text-[13px]">
+            <Button
+              href="#contact"
+              variant="primary"
+              className="px-5 py-2 text-[13px]"
+              onClick={() => handleNavClick({ preventDefault: () => {} } as any, "#contact")}
+            >
               Contact Us
             </Button>
           </div>
@@ -189,7 +223,7 @@ export function Navbar() {
                         ? "text-orange bg-orange/8"
                         : "text-navy/80 hover:text-navy hover:bg-navy/5",
                     )}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={(e) => handleNavClick(e, link.href)}
                   >
                     {link.label}
                   </a>
@@ -199,7 +233,7 @@ export function Navbar() {
                     href="#contact"
                     variant="primary"
                     className="w-full px-5 py-2.5 text-[13px]"
-                    onClick={() => setMenuOpen(false)}
+                    onClick={() => handleNavClick({ preventDefault: () => {} } as any, "#contact")}
                   >
                     Contact Us
                   </Button>
