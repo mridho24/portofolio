@@ -9,68 +9,99 @@ const certificates = [
     issuer: "Coding Camp 2025 - University",
     src: "/certificates/%5BCoding%20Camp%202025%20-%20University%5D%20Best%20Capstone%20Project.jpg",
     type: "image" as const,
+    color: "from-orange/20 to-yellow-400/20",
+    dot: "bg-orange",
   },
   {
     title: "Graduation Letter",
     issuer: "Coding Camp 2025",
     src: "/certificates/%5BCoding%20Camp%202025%5D%20Graduation%20Letter.pdf",
     type: "pdf" as const,
+    color: "from-emerald-400/20 to-teal-400/20",
+    dot: "bg-emerald-500",
   },
   {
     title: "IBM Design",
     issuer: "IBM",
     src: "/certificates/IBMDesign20250913.pdf",
     type: "pdf" as const,
+    color: "from-blue-400/20 to-indigo-400/20",
+    dot: "bg-blue-500",
   },
+]
+
+const highlights = [
+  { icon: "🏆", label: "Top 20 Capstone", sub: "DBS 2025" },
+  { icon: "🎓", label: "S.Kom Graduate", sub: "Universitas Syiah Kuala" },
+  { icon: "💼", label: "4+ Projects", sub: "Built & Shipped" },
+  { icon: "🌐", label: "2+ Years", sub: "of Experience" },
 ]
 
 export function StatsSection() {
   const [selectedCert, setSelectedCert] = useState<typeof certificates[number] | null>(null)
 
   return (
-    <section className="py-28 bg-white">
-      <div className="mx-auto w-full max-w-[1280px] px-6">
+    <section className="stats-section py-28 bg-white relative overflow-hidden">
+      {/* Background blobs */}
+      <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-orange/5 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-purple-100/20 blur-3xl pointer-events-none" />
+
+      <div className="relative mx-auto w-full max-w-[1280px] px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div className="relative rounded-[24px] bg-navy p-8">
-              <div className="flex items-center justify-between mb-8">
-                <p className="text-xs font-medium text-gray-400 uppercase tracking-widest">
-                  Certificates
-                </p>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium text-gray-300">
-                  {certificates.length} Total &amp; Lainnya
-                </span>
+
+          {/* Left — Certificate showcase */}
+          {/* Extra bottom padding so the floating badge is not clipped */}
+          <div className="pb-8">
+            <div className="stats-card relative rounded-[28px] bg-navy p-8 shadow-2xl">
+              {/* Decorative circles */}
+              <div className="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-white/5 pointer-events-none" />
+              <div className="absolute -bottom-8 -left-8 h-28 w-28 rounded-full bg-white/3 pointer-events-none" />
+
+              <div className="relative">
+                <div className="flex items-center justify-between mb-8">
+                  <div>
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">
+                      Achievements
+                    </p>
+                    <p className="text-white font-bold font-heading">Certificates</p>
+                  </div>
+                  <span className="rounded-full bg-orange/20 border border-orange/30 px-3 py-1 text-[11px] font-bold text-orange">
+                    {certificates.length} Total
+                  </span>
+                </div>
+
+                <div className="space-y-3">
+                  {certificates.map((cert) => (
+                    <button
+                      key={cert.title}
+                      onClick={() => setSelectedCert(cert)}
+                      className={`w-full flex items-center gap-4 rounded-2xl bg-gradient-to-r ${cert.color} px-5 py-4 text-left transition-all duration-300 hover:scale-[1.02] hover:brightness-125 cursor-pointer border border-white/8 backdrop-blur-sm`}
+                    >
+                      <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10">
+                        <span className={`absolute top-1 right-1 h-2 w-2 rounded-full ${cert.dot}`} />
+                        {cert.type === "image" ? (
+                          <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.41a2.25 2.25 0 013.182 0l2.909 2.91m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                          </svg>
+                        ) : (
+                          <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                          </svg>
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-bold text-white">{cert.title}</p>
+                        <p className="text-xs text-gray-300 mt-0.5">{cert.issuer}</p>
+                      </div>
+                      <svg className="h-4 w-4 shrink-0 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                      </svg>
+                    </button>
+                  ))}
+                </div>
               </div>
 
-              <div className="space-y-3">
-                {certificates.map((cert) => (
-                  <button
-                    key={cert.title}
-                    onClick={() => setSelectedCert(cert)}
-                    className="w-full flex items-center gap-4 rounded-xl bg-white/5 px-5 py-3.5 text-left transition-all duration-300 hover:bg-white/10 hover:scale-[1.02] cursor-pointer"
-                  >
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-orange/20">
-                      {cert.type === "image" ? (
-                        <svg className="h-5 w-5 text-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.41a2.25 2.25 0 013.182 0l2.909 2.91m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                        </svg>
-                      ) : (
-                        <svg className="h-5 w-5 text-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                        </svg>
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-semibold text-white">{cert.title}</p>
-                      <p className="text-xs text-gray-400">{cert.issuer}</p>
-                    </div>
-                    <svg className="h-4 w-4 shrink-0 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                    </svg>
-                  </button>
-                ))}
-              </div>
-
+              {/* Floating badge */}
               <div className="absolute -bottom-6 -left-4 md:-left-8 rounded-2xl bg-white px-5 py-4 shadow-floating">
                 <div className="flex items-center gap-3">
                   <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-orange-50 to-yellow-50">
@@ -87,7 +118,11 @@ export function StatsSection() {
             </div>
           </div>
 
-          <div className="lg:pl-8 animate-fade-up">
+          {/* Right — Heading + highlights grid */}
+          <div className="stats-right-content lg:pl-8">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange/20 bg-orange/5 px-4 py-1.5 text-xs font-semibold text-orange uppercase tracking-widest">
+              My Journey
+            </span>
             <h2 className="text-4xl md:text-5xl font-extrabold leading-tight font-heading">
               <span className="bg-gradient-to-r from-orange to-orange-300 bg-clip-text text-transparent">
                 Perfect Solution
@@ -102,11 +137,31 @@ export function StatsSection() {
               solutions that drive real results. Let me help you build
               something extraordinary for your business.
             </p>
+
+            {/* Highlights grid — replaces the old stats cards */}
+            <div className="mt-10 grid grid-cols-2 gap-4">
+              {highlights.map((h) => (
+                <div
+                  key={h.label}
+                  className="stats-card group flex items-center gap-4 rounded-2xl border border-navy/6 bg-white p-5 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-300"
+                >
+                  <span className="text-2xl" role="img" aria-label={h.label}>{h.icon}</span>
+                  <div>
+                    <p className="text-sm font-bold text-navy font-heading">{h.label}</p>
+                    <p className="text-[11px] text-muted mt-0.5">{h.sub}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
             <a
               href="#contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-[9999px] bg-orange px-9 py-4 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              className="mt-8 inline-flex items-center gap-2.5 rounded-[9999px] bg-orange px-9 py-4 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl group"
             >
-              Details
+              Let&apos;s Talk
+              <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
             </a>
           </div>
         </div>
