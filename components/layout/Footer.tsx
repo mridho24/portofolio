@@ -1,9 +1,11 @@
+"use client"
+
 const links = [
-  { label: "Home", href: "#home", active: true },
-  { label: "About", href: "#about", active: false },
-  { label: "Services", href: "#services", active: false },
-  { label: "Projects", href: "#projects", active: false },
-  { label: "Contact", href: "#contact", active: false },
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
 ]
 
 const socials = [
@@ -28,6 +30,29 @@ const socials = [
 ]
 
 export function Footer() {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) return
+    e.preventDefault()
+
+    const targetId = href.replace("#", "")
+    if (targetId === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      return
+    }
+
+    const targetEl = document.getElementById(targetId)
+    if (targetEl) {
+      const navOffset = 80
+      const elementPosition = targetEl.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - navOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      })
+    }
+  }
+
   return (
     <footer className="bg-navy">
       <div className="mx-auto w-full max-w-[1280px] px-6 py-12">
@@ -36,12 +61,13 @@ export function Footer() {
           <div>
             <a
               href="#home"
+              onClick={(e) => handleNavClick(e, "#home")}
               className="text-xl font-bold tracking-tight text-white font-heading hover:text-orange transition-colors duration-300"
             >
               Ridho
             </a>
             <p className="mt-2 text-xs text-gray-400 max-w-[220px] leading-relaxed">
-              Fullstack Developer & UI/UX Enthusiast crafting beautiful digital experiences.
+              Fullstack Developer &amp; UI/UX Enthusiast crafting beautiful digital experiences.
             </p>
             {/* Socials */}
             <div className="mt-4 flex items-center gap-3">
@@ -68,11 +94,8 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className={
-                      link.active
-                        ? "text-sm font-semibold text-orange"
-                        : "text-sm font-medium text-gray-400 transition-colors duration-300 hover:text-orange"
-                    }
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="text-sm font-medium text-gray-400 transition-colors duration-300 hover:text-orange"
                   >
                     {link.label}
                   </a>
