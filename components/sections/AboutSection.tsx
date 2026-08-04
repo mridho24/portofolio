@@ -1,6 +1,7 @@
 "use client"
 
 import dynamic from "next/dynamic"
+import { TechStackGrid } from "@/components/ui/TechStackGrid"
 
 const ShowcaseCard = dynamic(
   () => import("@/components/showcase/ShowcaseCard").then((m) => m.ShowcaseCard),
@@ -166,6 +167,11 @@ export function AboutSection() {
             </div>
           </div>
 
+        </div>
+
+        {/* Tech Stack Grid (No logos, clean skill matrix) */}
+        <div className="mt-20 pt-12 border-t border-navy/5">
+          <TechStackGrid />
         </div>
       </div>
     </section>
