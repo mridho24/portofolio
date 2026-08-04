@@ -46,6 +46,8 @@
   --animate-slide-right: slide-right 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
   --animate-marquee-left: marquee-left 28s linear infinite;
   --animate-marquee-right: marquee-right 28s linear infinite;
+  --animate-marquee: marquee var(--duration, 30s) linear infinite;
+  --animate-marquee-reverse: marquee-reverse var(--duration, 30s) linear infinite;
 }
 
 @keyframes fade-up {
@@ -99,6 +101,15 @@
 @keyframes marquee-right {
   0%   { transform: translateX(-50%); }
   100% { transform: translateX(0); }
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }
 
 /* Smooth scroll */
@@ -172,10 +183,14 @@ footer         { position: relative; z-index: 11; }
 .animate-fade-up { animation: var(--animate-fade-up); }
 .animate-marquee-left { animation: var(--animate-marquee-left); }
 .animate-marquee-right { animation: var(--animate-marquee-right); }
+.animate-marquee { animation: var(--animate-marquee); }
+.animate-marquee-reverse { animation: var(--animate-marquee-reverse); }
 
 /* Pause marquee when user prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee-left,
-  .animate-marquee-right { animation: none; }
+  .animate-marquee-right,
+  .animate-marquee,
+  .animate-marquee-reverse { animation: none; }
 }
 
