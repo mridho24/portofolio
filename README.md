@@ -57,17 +57,22 @@
 - **Tech Stack**: Next.js 15, Python FastAPI, TensorFlow, Google Cloud, Gemini 2.0, Supabase
 - 🌐 **[Live Demo](https://fe-purrpal.vercel.app/)** | 🐙 **[Repository](https://github.com/Hidayattt24/PURRPAL)**
 
-### 📋 **2. Rekan — Interactive Kanban Task Management App**
+### 🤖 **2. AI Productivity Planner — Smart Task Manager & Insight Engine**
+- **Overview**: Task manager berbasis web dengan bantuan AI — pecah tugas besar jadi sub-task + estimasi waktu, dan dapatkan ringkasan insight mingguan.
+- **Tech Stack**: Next.js, Prisma, Supabase, Google Gemini
+- 🐙 **[Repository](https://github.com/mridho24/ai-productivity-planner)**
+
+### 📋 **3. Rekan — Interactive Kanban Task Management App**
 - **Overview**: Aplikasi manajemen tugas interaktif dengan tampilan board Kanban, sistem drag & drop task (To Do, In Progress, Done), dashboard statistik aktivitas, multi-project workspace, & tema Dark/Light mode.
 - **Tech Stack**: React 19, Vite, Framer Motion, Supabase Client, Lucide Icons
 - 🐙 **[Repository](https://github.com/mridho24/Rekan)**
 
-### 📖 **3. Cerita-Kita — PWA Story Sharing & Exploration Platform**
+### 📖 **4. Cerita-Kita — PWA Story Sharing & Exploration Platform**
 - **Overview**: Platform berbagi cerita inspiratif berbasis Progressive Web App (PWA). Memungkinkan pengguna berbagi pengalaman, akses cerita offline dengan IndexedDB, Background Sync otomatis saat online, & peta lokasi Leaflet.
 - **Tech Stack**: Vite, Leaflet Maps, PWA, IndexedDB, Service Worker
 - 🌐 **[Live Demo](https://spiffy-kringle-ed8336.netlify.app)** | 🐙 **[Repository](https://github.com/mridho24/Cerita-Kita)**
 
-### ☕ **4. Manage-Inventory — Coffee Shop Inventory & Stock System**
+### ☕ **5. Manage-Inventory — Coffee Shop Inventory & Stock System**
 - **Overview**: Aplikasi web modern untuk membantu pemilik kedai kopi memantau stok barang real-time (bubuk, cup, susu), pencatatan transaksi stok masuk & keluar, alert low stock, serta grafik visualisasi laporan Recharts.
 - **Tech Stack**: Next.js 15, React 19, Tailwind CSS v4, TypeScript, Recharts, Shadcn UI
 - 🐙 **[Repository](https://github.com/mridho24/Manage-Inventory)**
