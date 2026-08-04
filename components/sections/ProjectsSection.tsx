@@ -15,9 +15,21 @@ const projects = [
     tech: ["Next.js 15", "Python FastAPI", "TensorFlow", "Google Cloud", "Gemini 2.0", "Supabase"],
   },
   {
+    id: "ai-productivity-planner",
+    title: "AI Productivity Planner",
+    num: "02",
+    subtitle: "AI-Powered Smart Task Manager & Insight Engine",
+    description:
+      "Task manager berbasis web dengan bantuan AI — pecah tugas besar jadi sub-task + estimasi waktu, dan dapatkan ringkasan insight mingguan.",
+    gradient: "from-cyan-700 via-blue-600 to-indigo-700",
+    tag: "AI / Productivity",
+    href: "https://github.com/mridho24/ai-productivity-planner.git",
+    tech: ["Next.js", "Prisma", "Supabase", "Google Gemini"],
+  },
+  {
     id: "rekan",
     title: "Rekan",
-    num: "02",
+    num: "03",
     subtitle: "Interactive Kanban Task Management App",
     description:
       "Aplikasi manajemen tugas interaktif dengan tampilan board Kanban, sistem drag & drop task, dashboard statistik aktivitas, multi-project workspace, modal edit detail task, serta dukungan Dark / Light mode.",
@@ -29,7 +41,7 @@ const projects = [
   {
     id: "cerita-kita",
     title: "Cerita-Kita",
-    num: "03",
+    num: "04",
     subtitle: "PWA Story Sharing & Exploration Platform",
     description:
       "Platform berbagi cerita inspiratif berbasis Progressive Web App (PWA). Memungkinkan pengguna berbagi pengalaman, akses cerita offline dengan IndexedDB, Background Sync otomatis saat online, & peta lokasi Leaflet.",
@@ -42,7 +54,7 @@ const projects = [
   {
     id: "manage-inventory",
     title: "Manage-Inventory",
-    num: "04",
+    num: "05",
     subtitle: "Coffee Shop Inventory & Stock System",
     description:
       "Aplikasi web modern untuk membantu pemilik kedai kopi memantau stok barang real-time (bubuk, cup, susu), manajemen transaksi stok masuk & keluar, alert low stock, serta grafik visualisasi laporan Recharts.",
