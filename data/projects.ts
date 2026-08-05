@@ -124,50 +124,75 @@ export const projects: Project[] = [
   {
     id: "ai-productivity-planner",
     slug: "ai-productivity-planner",
-    title: "AI Productivity Planner",
-    subtitle: "AI-Powered Smart Task Manager & Insight Engine",
+    title: "Planbreak — AI Productivity Planner",
+    subtitle: "AI-Native Smart Task Manager & Insight Engine",
     tag: "AI / Productivity",
     gradient: "from-cyan-700 via-blue-600 to-indigo-700",
     num: "02",
     shortDescription:
-      "Task manager berbasis web dengan bantuan AI — pecah tugas besar jadi sub-task + estimasi waktu, dan dapatkan ringkasan insight mingguan.",
+      "Task manager web full-stack (Next.js + Supabase) yang memanfaatkan Google Gemini untuk memecah rencana besar menjadi langkah kecil + estimasi waktu, menyusun prioritas harian, membuat task lewat input bahasa alami, dan merangkum insight produktivitas mingguan.",
     longDescription:
-      "AI Productivity Planner adalah task manager modern yang ditenagai oleh AI. Alat ini membantu pengguna memecah tugas besar menjadi sub-task yang lebih kecil dan realistis, lengkap dengan estimasi waktu pengerjaan. Setiap minggunya, pengguna mendapatkan ringkasan insight tentang produktivitas mereka sehingga bisa terus memperbaiki cara kerja.",
+      "Planbreak adalah task manager berbasis web (full-stack) yang satu tingkat di atas aplikasi todo biasa: ia memakai kecerdasan buatan Google Gemini untuk mengubah \u201crencana abstrak\u201d menjadi langkah-langkah kecil yang konkret, terurut, dan berestimasi waktu — sehingga setiap rencana terasa bisa dieksekusi, bukan sekadar ditulis dan dilupakan. Posisinya sebagai productivity tool \u201cAI-native\u201d: AI bukan hiasan, melainkan bagian inti dari alur kerja sehari-hari. Fitur utamanya mencakup AI Breakdown, Smart Prioritization, Natural-Language Task Creation, dan Weekly Insight — semuanya divalidasi serta disanitasi di server sebelum disimpan, dengan fallback yang ramah saat kuota gratis Gemini habis.",
     coverImage: "/images/ai-productivity.png",
-    duration: "2025",
+    duration: "2026 (roadmap 14 hari)",
     client: "Personal Project",
     githubUrl: "https://github.com/mridho24/ai-productivity-planner.git",
-    tags: ["#ai", "#productivity", "#task-manager"],
-    tech: ["Next.js", "Prisma", "Supabase", "Google Gemini"],
+    tags: ["#ai", "#productivity", "#fullstack", "#nextjs"],
+    tech: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "shadcn/ui",
+      "Prisma 7",
+      "Supabase Postgres",
+      "NextAuth v5",
+      "Google Gemini",
+      "Recharts",
+      "Zod",
+    ],
     timeline: [
       {
-        title: "Start",
-        metaTags: ["planning", "product design", "2025"],
+        title: "Setup",
+        metaTags: ["planning", "init", "setup"],
         description:
-          "Merancang alur task management serta menentukan bagaimana AI memberikan estimasi dan rekomendasi sub-task.",
+          "Init Next.js + Tailwind + shadcn/ui, konfigurasi Prisma/Supabase, skema database, dan seed data awal.",
       },
       {
-        title: "Development",
-        metaTags: ["gemini ai", "prisma", "supabase"],
+        title: "Authentication",
+        metaTags: ["nextauth v5", "bcrypt", "protect routes"],
         description:
-          "Membangun fitur pemecahan otomatis tugas dan estimasi waktu berbasis Gemini serta menyimpan data lewat Prisma/Supabase.",
+          "Membangun autentikasi lengkap dengan NextAuth v5 dan bcrypt, proteksi route, reset password, serta strength meter.",
       },
       {
-        title: "Insight Engine",
-        metaTags: ["weekly summary", "analytics"],
+        title: "CRUD & Dashboard",
+        metaTags: ["crud task", "subtask", "recharts"],
         description:
-          "Menambahkan engine ringkasan insight mingguan untuk memantau tren produktivitas pengguna.",
+          "Mengembangkan CRUD task & subtask penuh, dashboard statistik (completion rate, chart Recharts, badge overdue), sorting dan filter kategori.",
       },
       {
-        title: "Launch",
-        metaTags: ["polish", "deployment"],
+        title: "AI Engine",
+        metaTags: ["gemini", "breakdown", "weekly insight"],
         description:
-          "Menyempurnakan antarmuka dan meluncurkan platform untuk penggunaan pribadi.",
+          "Membangun AI Breakdown dan Weekly Insight dengan validasi & sanitasi respons di server, plus fallback rate-limit yang aman.",
+      },
+      {
+        title: "Optimal Features",
+        metaTags: ["smart prioritization", "nl task creation", "polish"],
+        description:
+          "Menambahkan Smart Prioritization, Natural-Language Task Creation, dan penyempurnaan pengalaman pengguna.",
+      },
+      {
+        title: "Docs & CI",
+        metaTags: ["readme", "ci", "testing"],
+        description:
+          "Menyusun dokumentasi profesional serta menyiapkan GitHub Actions dan Vitest (CI + testing).",
       },
     ],
     contentParagraphs: [
-      "Berfokus pada kebiasaan 'tyranny of tasks' yang sering membuat pekerjaan terasa berat, planner ini memanfaatkan kecerdasan buatan untuk menyederhanakan perencanaan harian dan mingguan.",
-      "Insight mingguan memberikan refleksi objektif terhadap pola kerja, membantu pengguna mengidentifikasi apa yang paling produktif dan apa yang perlu ditingkatkan.",
+      "Planbreak lahir untuk memecahkan masalah \u201crencana besar yang terus ditunda\u201d — seperti menyusun skripsi, deploy aplikasi, atau pindahan rumah. Alih-alih menulis target dan melupakannya, AI memecah satu tugas besar menjadi 3\u20137 subtask konkret lengkap dengan estimasi durasi menit, sehingga pekerjaan terasa bisa dieksekusi.",
+      "Empat kekuatan AI menjadi inti nilai proyek ini: AI Breakdown untuk memecah rencana, Smart Prioritization untuk fokus harian berdasar urgensi tenggat & bobot tugas, Natural-Language Task Creation untuk membuat task lewat kalimat biasa, dan Weekly Insight untuk merangkum pola serta saran produktivitas mingguan. Pengguna tetap memegang kendali penuh dengan CRUD task, subtask yang bisa diurutkan ulang, kalender due date, serta ekspor ke CSV/JSON.",
+      "Dibangun sepanjang 2026 secara bertahap dari nol hingga menjadi aplikasi fungsional penuh, Planbreak menonjolkan full-stack TypeScript, autentikasi lengkap, dashboard interaktif, dan integrasi AI Google Gemini yang dirancang tidak pernah membuat aplikasi crash.",
     ],
   },
   {
