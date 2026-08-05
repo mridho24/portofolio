@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
 import { Poppins, Inter } from "next/font/google"
+import { Navbar } from "@/components/layout/Navbar"
+import { Footer } from "@/components/layout/Footer"
 import { BackToTop } from "@/components/ui/BackToTop"
 import { AnimationsProvider } from "@/components/AnimationsProvider"
 import "./globals.css"
@@ -33,9 +35,11 @@ export default function RootLayout({
       className={`${poppins.variable} ${inter.variable}`}
     >
       <body className="min-h-screen flex flex-col antialiased">
+        <Navbar />
         <AnimationsProvider>
           {children}
         </AnimationsProvider>
+        <Footer />
         <BackToTop />
       </body>
     </html>
