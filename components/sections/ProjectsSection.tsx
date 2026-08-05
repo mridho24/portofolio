@@ -1,69 +1,7 @@
 "use client"
 
-const projects = [
-  {
-    id: "purrpal",
-    title: "PURRPAL",
-    num: "01",
-    subtitle: "AI-Powered Cat Healthcare Platform",
-    description:
-      "Platform kesehatan kucing berbasis AI 24/7 di Indonesia. Menggabungkan Symptom Analysis (Random Forest 87.3%), Vision Skin Disease Detection (CNN 85.2%), Conversational AI Gemini 2.0, & Finder Layanan Veteriner.",
-    gradient: "from-emerald-800 via-teal-700 to-cyan-600",
-    tag: "AI / Healthcare",
-    href: "https://github.com/Hidayattt24/PURRPAL.git",
-    liveUrl: "https://fe-purrpal.vercel.app/",
-    tech: ["Next.js 15", "Python FastAPI", "TensorFlow", "Google Cloud", "Gemini 2.0", "Supabase"],
-  },
-  {
-    id: "ai-productivity-planner",
-    title: "AI Productivity Planner",
-    num: "02",
-    subtitle: "AI-Powered Smart Task Manager & Insight Engine",
-    description:
-      "Task manager berbasis web dengan bantuan AI — pecah tugas besar jadi sub-task + estimasi waktu, dan dapatkan ringkasan insight mingguan.",
-    gradient: "from-cyan-700 via-blue-600 to-indigo-700",
-    tag: "AI / Productivity",
-    href: "https://github.com/mridho24/ai-productivity-planner.git",
-    tech: ["Next.js", "Prisma", "Supabase", "Google Gemini"],
-  },
-  {
-    id: "rekan",
-    title: "Rekan",
-    num: "03",
-    subtitle: "Interactive Kanban Task Management App",
-    description:
-      "Aplikasi manajemen tugas interaktif dengan tampilan board Kanban, sistem drag & drop task, dashboard statistik aktivitas, multi-project workspace, modal edit detail task, serta dukungan Dark / Light mode.",
-    gradient: "from-violet-700 via-purple-600 to-indigo-500",
-    tag: "Productivity App",
-    href: "https://github.com/mridho24/Rekan.git",
-    tech: ["React 19", "Vite", "Framer Motion", "Supabase Client", "Lucide Icons"],
-  },
-  {
-    id: "cerita-kita",
-    title: "Cerita-Kita",
-    num: "04",
-    subtitle: "PWA Story Sharing & Exploration Platform",
-    description:
-      "Platform berbagi cerita inspiratif berbasis Progressive Web App (PWA). Memungkinkan pengguna berbagi pengalaman, akses cerita offline dengan IndexedDB, Background Sync otomatis saat online, & peta lokasi Leaflet.",
-    gradient: "from-rose-600 via-pink-500 to-fuchsia-500",
-    tag: "PWA / Social Media",
-    href: "https://github.com/mridho24/Cerita-Kita.git",
-    liveUrl: "https://spiffy-kringle-ed8336.netlify.app",
-    tech: ["Vite", "Leaflet Maps", "PWA", "IndexedDB", "Service Worker"],
-  },
-  {
-    id: "manage-inventory",
-    title: "Manage-Inventory",
-    num: "05",
-    subtitle: "Coffee Shop Inventory & Stock System",
-    description:
-      "Aplikasi web modern untuk membantu pemilik kedai kopi memantau stok barang real-time (bubuk, cup, susu), manajemen transaksi stok masuk & keluar, alert low stock, serta grafik visualisasi laporan Recharts.",
-    gradient: "from-amber-600 via-orange-500 to-yellow-500",
-    tag: "Business / ERP",
-    href: "https://github.com/mridho24/Manage-Inventory.git",
-    tech: ["Next.js 15", "React 19", "Tailwind CSS v4", "TypeScript", "Recharts", "Shadcn UI"],
-  },
-]
+import Link from "next/link"
+import { projects } from "@/data/projects"
 
 export function ProjectsSection() {
   return (
@@ -101,6 +39,13 @@ export function ProjectsSection() {
               zIndex: i + 1,
             }}
           >
+            {/* Full-card link to detail page + View Details affordance */}
+            <Link
+              href={`/projects/${project.slug}`}
+              className="absolute inset-0 z-[1] block"
+              aria-label={`View details for ${project.title}`}
+            />
+
             <div
               className={`relative min-h-[460px] md:min-h-[520px] bg-gradient-to-br ${project.gradient} flex flex-col justify-end p-8 md:p-12`}
             >
@@ -124,8 +69,9 @@ export function ProjectsSection() {
                 </span>
               </div>
 
-              {/* Content area */}
-              <div className="relative z-10">
+              {/* Content area — pointer-events off so clicks reach the overlay link,
+                  re-enabled only on the interactive action buttons below */}
+              <div className="relative z-10 pointer-events-none">
                 {/* Tag pill */}
                 <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/25 px-4 py-1.5 text-[11px] font-semibold text-white uppercase tracking-widest">
                   {project.tag}
@@ -141,11 +87,11 @@ export function ProjectsSection() {
 
                 {/* Description */}
                 <p className="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                  {project.description}
+                  {project.shortDescription}
                 </p>
 
                 {/* Footer row: Tech tags + Action buttons */}
-                <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-white/20">
+                <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-white/20 pointer-events-auto">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((t) => (
                       <span
@@ -158,9 +104,20 @@ export function ProjectsSection() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    {project.liveUrl && (
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="flex items-center gap-2 rounded-full bg-white text-navy px-5 py-2.5 text-xs md:text-sm font-bold shadow-md hover:bg-orange hover:text-white transition-all duration-300"
+                    >
+                      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      <span>View Details</span>
+                    </Link>
+
+                    {project.siteUrl && (
                       <a
-                        href={project.liveUrl}
+                        href={project.siteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 rounded-full bg-white text-navy px-5 py-2.5 text-xs md:text-sm font-bold shadow-md hover:bg-orange hover:text-white transition-all duration-300"
@@ -177,7 +134,7 @@ export function ProjectsSection() {
                     )}
 
                     <a
-                      href={project.href}
+                      href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 rounded-full bg-white/20 px-5 py-2.5 text-xs md:text-sm font-semibold text-white backdrop-blur-sm border border-white/25 hover:bg-white/35 transition-colors duration-300"
