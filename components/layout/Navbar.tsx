@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import { useRouter, usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/Button"
@@ -19,6 +20,8 @@ const serviceSubmenu = [
 ]
 
 export function Navbar() {
+  const router = useRouter()
+  const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const [active, setActive] = useState("home")
   const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -64,6 +67,27 @@ export function Navbar() {
     setDropdownOpen(false)
 
     const targetId = href.replace("#", "")
+
+    if (pathname !== "/") {
+      router.push("/" + href)
+      window.setTimeout(() => {
+        if (targetId === "home") {
+          window.scrollTo({ top: 0, behavior: "smooth" })
+          return
+        }
+        const targetEl = document.getElementById(targetId)
+        if (targetEl) {
+          const navOffset = 80
+          const elementPosition = targetEl.getBoundingClientRect().top
+          window.scrollTo({
+            top: window.pageYOffset + elementPosition - navOffset,
+            behavior: "smooth",
+          })
+        }
+      }, 600)
+      return
+    }
+
     if (targetId === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" })
       return
