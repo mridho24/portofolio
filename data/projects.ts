@@ -206,44 +206,57 @@ export const projects: Project[] = [
     gradient: "from-violet-700 via-purple-600 to-indigo-500",
     num: "03",
     shortDescription:
-      "Aplikasi manajemen tugas interaktif dengan tampilan board Kanban, sistem drag & drop task, dashboard statistik aktivitas, multi-project workspace, modal edit detail task, serta dukungan Dark / Light mode.",
+      "Aplikasi manajemen tugas/proyek berbasis web dengan tampilan Kanban board, sistem drag & drop task, dashboard statistik aktivitas, kalender deadline bulanan, editor catatan kaya (rich text), dan pet companion interaktif.",
     longDescription:
-      "Rekan adalah aplikasi manajemen tugas interaktif berbasis board Kanban. Pengguna dapat mengorganisir pekerjaan secara visual melalui sistem drag & drop, memantau aktivitas dengan dashboard statistik, dan bekerja pada multi-project workspace. Aplikasi ini juga menyediakan modal untuk mengedit detail task serta dukungan penuh mode gelap dan terang.",
+      "Rekan adalah aplikasi manajemen tugas/proyek berbasis web (frontend) dalam Bahasa Indonesia, ditujukan untuk personal productivity — mahasiswa, pekerja, maupun individu yang ingin mengelola tugas kuliah atau kantor. Alur kerjanya terstruktur: Project → Board → Task → Subtask. Pengguna dapat memantau progres pekerjaan lewat dashboard statistik & activity calendar, mengelola tugas secara visual via board Kanban (To Do / In Progress / Done) dengan drag & drop, memantau deadline project melalui kalender bulanan, membuat catatan kaya (rich text) dengan editor TipTap, hingga menikmati pengalaman menyenangkan lewat pet companion interaktif.",
     coverImage: "/images/Rekan.png",
-    duration: "2025",
+    duration: "2025 (roadmap ~4-6 minggu)",
     client: "Personal Project",
     githubUrl: "https://github.com/mridho24/Rekan.git",
-    tags: ["#kanban", "#productivity", "#react"],
-    tech: ["React 19", "Vite", "Framer Motion", "Supabase Client", "Lucide Icons"],
+    tags: ["#kanban", "#productivity", "#react", "#framer-motion", "#zustand", "#tiptap", "#supabase", "#pwa"],
+    tech: [
+      "React 19",
+      "Vite 8",
+      "JavaScript",
+      "Tailwind CSS",
+      "Zustand",
+      "Supabase (PostgreSQL)",
+      "TipTap 3",
+      "Framer Motion",
+      "Lucide React",
+      "@dnd-kit",
+      "Recharts",
+    ],
     timeline: [
       {
-        title: "Start",
-        metaTags: ["planning", "ui design", "2025"],
+        title: "Fondasi & Arsitektur",
+        metaTags: ["minggu 1-2", "supabase", "zustand", "auth"],
         description:
-          "Merancang konsep board Kanban dan pengalaman interaksi drag & drop yang mulus.",
+          "Restrukturisasi folder (lib/, stores/, hooks/, pages/), setup Supabase Project + env config, pembuatan database schema via migration SQL, implementasi RLS policies, pembuatan Zustand stores (auth, project, board, task, notes, theme), serta migrasi auth & mock data ke Supabase. Milestone M1: data persisten.",
       },
       {
-        title: "Development",
-        metaTags: ["react 19", "framer motion", "vite"],
+        title: "Penyempurnaan Fitur Inti",
+        metaTags: ["minggu 2-3", "dnd-kit", "search", "notes online"],
         description:
-          "Membangun kanban board, dashboard statistik, dan multi-project workspace dengan animasi halus berbasis Framer Motion.",
+          "Upgrade drag & drop ke @dnd-kit untuk konsistensi touch & mobile, menambahkan filter & search lanjutan (multi-kriteria, sort), board detail view lengkap, serta migrasi Notes ke database. Milestone M2: fitur inti lengkap.",
       },
       {
-        title: "Polish",
-        metaTags: ["dark mode", "ux", "testing"],
+        title: "Kolaborasi & Produktivitas",
+        metaTags: ["minggu 3-5", "assignment", "real-time", "notifikasi"],
         description:
-          "Menambahkan dark/light mode serta menyempurnakan interaksi edit detail task.",
+          "Menambahkan task assignment & team member, comments real-time per task, file attachments via Supabase Storage, notifikasi in-app (Edge Function trigger), serta enhancement dashboard (chart, productivity score). Milestone M3: kolaboratif.",
       },
       {
-        title: "Launch",
-        metaTags: ["deployment"],
+        title: "Polish, Testing & Deployment",
+        metaTags: ["minggu 5-6", "vitest", "playwright", "pwa", "vercel"],
         description:
-          "Meluncurkan aplikasi untuk penggunaan sehari-hari.",
+          "Testing dengan Vitest + React Testing Library + Playwright, menambahkan error boundaries & toast notification, responsive mobile + PWA, serta CI/CD via GitHub Actions + Vercel. Milestone M4: production ready.",
       },
     ],
     contentParagraphs: [
-      "Rekan dibangun dengan fokus pada pengalaman interaksi visual — membuat pengelolaan tugas terasa intuitif dan menyenangkan, bukan monoton.",
-      "Animasi halus dan dukungan mode gelap menjadikan aplikasi ini nyaman digunakan dalam berbagai kondisi kerja.",
+      "Rekan hadir untuk membantu pengguna mengorganisir pekerjaan melalui alur yang jelas: Project → Board → Task → Subtask. Progres dipantau lewat dashboard statistik dan activity calendar, tugas dikelola secara visual pada board Kanban (To Do / In Progress / Done) dengan drag & drop, deadline dijejaki via kalender bulanan, catatan dibuat dengan editor rich text TipTap, dan pengalaman pengguna dipermanis oleh pet companion interaktif.",
+      "Dibangun dengan React 19 + Vite 8, animasi halus Framer Motion, ikon Lucide React, rich text editor TipTap 3 (StarterKit, Table, TaskList, Image, Link), serta popover @floating-ui/react. Direncanakan terhubung dengan Supabase (PostgreSQL), dielola state-nya lewat Zustand, dan divisualisasikan dengan Recharts — memberikan fondasi full-stack yang siap dikembangkan.",
+      "Saat ini fitur inti (Dashboard, Board, Calendar, Notes, Settings) telah selesai, namun data masih berupa mock data + localStorage dan autentikasi masih simulasi. Roadmap pengembangan ±4-6 minggu diarahkan untuk mencapai data yang persisten, dukungan kolaborasi real-time, hingga status production ready dengan catatan penting seperti merapikan terjemahan UI yang masih campur, merapikan duplikasi kode (LABEL_COLORS, PRIORITY_OPTIONS, formatDate), memecah App.jsx yang sudah mencapai 656 baris, dan upgrade drag-drop dari HTML5 native ke @dnd-kit.",
     ],
   },
   {
@@ -255,39 +268,62 @@ export const projects: Project[] = [
     gradient: "from-rose-600 via-pink-500 to-fuchsia-500",
     num: "04",
     shortDescription:
-      "Platform berbagi cerita inspiratif berbasis Progressive Web App (PWA). Memungkinkan pengguna berbagi pengalaman, akses cerita offline dengan IndexedDB, Background Sync otomatis saat online, & peta lokasi Leaflet.",
+      "Platform berbagi cerita inspiratif berbasis Progressive Web App (PWA). Memungkinkan pengguna berbagi cerita & momen, akses offline melalui IndexedDB, Background Sync otomatis saat online, & peta lokasi Leaflet.",
     longDescription:
-      "Cerita-Kita adalah platform berbagi cerita inspiratif berbasis Progressive Web App (PWA). Pengguna dapat membagikan pengalaman mereka dan menjelajahi cerita orang lain. Aplikasi ini mendukung akses offline melalui IndexedDB, sinkronisasi otomatis saat kembali online (Background Sync), serta visualisasi lokasi cerita menggunakan peta Leaflet.",
+      "Cerita-Kita adalah aplikasi web berbasis Progressive Web App (PWA) yang memungkinkan pengguna berbagi pengalaman, cerita inspiratif, maupun momen kehidupan kepada pengguna lain melalui antarmuka sederhana dan responsif. Aplikasi ini dirancang tetap optimal meski koneksi terbatas dengan teknologi offline-first seperti Service Worker, IndexedDB, dan Background Sync. Dikembangkan sebagai implementasi teknologi web modern yang berfokus pada performa, aksesibilitas, dan pengalaman pengguna — sehingga aplikasi dapat diinstal layak aplikasi native dan tetap berfungsi ketika perangkat offline.",
     coverImage: "/images/Cerita-Kita.png",
     duration: "2025",
     client: "Dicoding Submission",
     siteUrl: "https://spiffy-kringle-ed8336.netlify.app",
     githubUrl: "https://github.com/mridho24/Cerita-Kita.git",
-    tags: ["#pwa", "#story", "#offline-first"],
-    tech: ["Vite", "Leaflet Maps", "PWA", "IndexedDB", "Service Worker"],
+    tags: ["#pwa", "#story", "#offline-first", "#javascript", "#vite", "#indexeddb", "#service-worker", "#background-sync", "#leaflet", "#netlify"],
+    tech: [
+      "Vite",
+      "JavaScript ES6+",
+      "PWA",
+      "Service Worker",
+      "IndexedDB",
+      "Background Sync API",
+      "Leaflet.js",
+      "HTML5 & CSS3",
+      "REST API",
+    ],
     timeline: [
       {
-        title: "Start",
-        metaTags: ["planning", "pwa setup", "2025"],
+        title: "Requirement Analysis & UI/UX Design",
+        metaTags: ["kebutuhan fitur", "alur pengguna", "2025"],
         description:
-          "Merancang platform berbagi cerita dan menyiapkan arsitektur PWA dengan service worker.",
+          "Menentukan kebutuhan aplikasi dan fitur utama, merancang tampilan serta alur pengguna untuk pengalaman yang intuitif.",
       },
       {
-        title: "Development",
-        metaTags: ["indexeddb", "background sync", "leaflet"],
+        title: "Frontend & Story Feature",
+        metaTags: ["vite", "berbagi cerita", "development"],
         description:
-          "Membangun fitur berbagi cerita, akses offline lewat IndexedDB, dan sinkronisasi otomatis saat online.",
+          "Mengimplementasikan antarmuka menggunakan Vite lalu mengembangkan fitur berbagi dan menjelajahi cerita antar pengguna.",
       },
       {
-        title: "Launch",
-        metaTags: ["deployment", "netlify"],
+        title: "Offline Support",
+        metaTags: ["service worker", "caching", "offline-first"],
         description:
-          "Menyempurnakan fitur peta lokasi dan meluncurkan platform ke production.",
+          "Mengimplementasikan Service Worker dan strategi caching yang efisien agar cerita yang disimpan tetap dapat diakses tanpa koneksi internet.",
+      },
+      {
+        title: "IndexedDB & Background Sync",
+        metaTags: ["indexeddb", "sinkronisasi", "reconnecting"],
+        description:
+          "Menerapkan penyimpanan lokal dengan IndexedDB serta Background Sync sehingga data yang dibuat saat offline otomatis tersinkron ke server ketika perangkat kembali online.",
+      },
+      {
+        title: "Testing & Deployment",
+        metaTags: ["online/offline", "netlify", "deploy"],
+        description:
+          "Menguji fitur dalam kondisi online dan offline, menyempurnakan peta interaktif Leaflet, lalu men-deploy aplikasi menggunakan Netlify.",
       },
     ],
     contentParagraphs: [
-      "Cerita-Kita menekankan prinsip offline-first sehingga pengguna tetap dapat membaca dan menulis cerita bahkan tanpa koneksi internet.",
-      "Pendekatan PWA membuat akses cepat dan ringan, seolah-olah aplikasi native namun tanpa perlu instalasi kompleks.",
+      "Cerita-Kita dikembangkan untuk membangun platform berbagi cerita dan pengalaman antar pengguna, mengimplementasikan konsep PWA agar aplikasi dapat digunakan secara offline, menghadirkan pengalaman yang cepat, ringan, dan responsif, menerapkan penyimpanan lokal IndexedDB agar konten tetap dapat diakses tanpa koneksi, serta mengoptimalkan sinkronisasi data melalui Background Sync ketika koneksi kembali tersedia.",
+      "Secara arsitektur, aplikasi berjalan di atas frontend Vite yang menangani Story Management, Leaflet Map untuk menampilkan lokasi cerita, IndexedDB sebagai media penyimpanan lokal, serta Service Worker dan Background Sync yang menghubungkan aplikasi ke REST API. Seluruh lapisan ini dirancang agar pengalaman tetap memberi sepenuhnya meskipun pengguna bekerja di tengah koneksi yang tidak stabil.",
+      "Project ini fokus pada pembelajaran implementasi PWA secara menyeluruh — memahami cara kerja Service Worker dan strategi caching, menerapkan penyimpanan lokal IndexedDB, serta mengembangkan aplikasi yang tetap berfungsi offline. Hasilnya, Cerita-Kita berhasil mendukung penggunaan offline, memiliki performa cepat berkat mekanisme caching, dapat diinstal pada desktop maupun mobile, memberi pengalaman responsif dan intuitif, sekaligus menghadirkan berbagai fitur utama PWA sesuai praktik pengembangan web modern.",
     ],
   },
   {
