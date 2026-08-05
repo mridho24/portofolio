@@ -1,5 +1,7 @@
 "use client"
 
+import { useRouter, usePathname } from "next/navigation"
+
 const links = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
@@ -30,11 +32,35 @@ const socials = [
 ]
 
 export function Footer() {
+  const router = useRouter()
+  const pathname = usePathname()
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (!href.startsWith("#")) return
     e.preventDefault()
 
     const targetId = href.replace("#", "")
+
+    if (pathname !== "/") {
+      router.push("/" + href)
+      window.setTimeout(() => {
+        if (targetId === "home") {
+          window.scrollTo({ top: 0, behavior: "smooth" })
+          return
+        }
+        const targetEl = document.getElementById(targetId)
+        if (targetEl) {
+          const navOffset = 80
+          const elementPosition = targetEl.getBoundingClientRect().top
+          window.scrollTo({
+            top: window.pageYOffset + elementPosition - navOffset,
+            behavior: "smooth",
+          })
+        }
+      }, 600)
+      return
+    }
+
     if (targetId === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" })
       return
