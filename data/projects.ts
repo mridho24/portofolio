@@ -45,56 +45,75 @@ export const projects: Project[] = [
     shortDescription:
       "Platform kesehatan kucing berbasis AI 24/7 di Indonesia. Menggabungkan Symptom Analysis (Random Forest 87.3%), Vision Skin Disease Detection (CNN 85.2%), Conversational AI Gemini 2.0, & Finder Layanan Veteriner.",
     longDescription:
-      "Purrpal adalah platform kesehatan kucing all-in-one berbasis AI yang tersedia 24/7, dirancang khusus untuk pemilik kucing di Indonesia. Platform ini menggabungkan tiga inti kecerdasan buatan: analisis gejala dengan model Random Forest (akurasi 87.3%), pendeteksian penyakit kulit melalui computer vision CNN (akurasi 85.2%), serta conversational AI berbasis Gemini 2.0 untuk menjawab pertanyaan seputar perawatan kucing. Selain itu, Purrpal dilengkapi pencari layanan veteriner sehingga pengguna dapat langsung menemukan klinik hewan terdekat ketika dibutuhkan.",
+      "Purrpal adalah platform kesehatan kucing berbasis AI yang dirancang untuk mengatasi tantangan akses layanan veteriner di Indonesia. Jutaan pemilik kucing menghadapi kendala — keterbatasan geografis klinik hewan yang hanya tersedia di kota besar, biaya konsultasi yang tinggi, jam operasional yang tidak fleksibel, serta minimnya edukasi kesehatan yang reliable. Purrpal hadir sebagai \"Dokter Hewan Digital\" yang accessible 24/7, menggabungkan AI-powered diagnosis (Random Forest 87.3% untuk analisis gejala, CNN 85.2% untuk deteksi penyakit kulit dari foto), conversational AI berbasis Gemini 2.0, serta pencari layanan veteriner terdekat — menjadikan layanan kesehatan kucing lebih terjangkau, cepat, dan merata bagi seluruh pemilik kucing di Indonesia.",
     coverImage: "/images/Purrpal.png",
     duration: "2024 - 2025",
     client: "DBS Foundation Coding Camp",
     siteUrl: "https://fe-purrpal.vercel.app/",
     githubUrl: "https://github.com/Hidayattt24/PURRPAL.git",
-    tags: ["#ai", "#healthcare", "#machine-learning", "#indonesia"],
+    tags: ["#ai", "#healthcare", "#machine-learning", "#veterinary", "#pwa"],
     tech: [
       "Next.js 15",
-      "Python FastAPI",
-      "TensorFlow",
-      "Google Cloud",
-      "Gemini 2.0",
+      "TypeScript",
+      "Express.js",
       "Supabase",
+      "Python",
+      "FastAPI",
+      "TensorFlow",
+      "scikit-learn",
+      "Gemini 2.0",
+      "Google Cloud",
+      "Docker",
+      "Vercel",
     ],
     timeline: [
       {
-        title: "Start",
-        metaTags: ["planning", "project lead", "2024"],
+        title: "Research & Planning",
+        metaTags: ["planning", "problem research", "2024"],
         description:
-          "Menyusun riset kebutuhan pemilik kucing di Indonesia serta memetakan arsitektur platform dan model AI yang akan dibangun.",
+          "Melakukan riset kebutuhan pemilik kucing di Indonesia, memetakan arsitektur multi-service yang akan dibangun, serta membentuk tim lintas peran (Project Lead, Frontend, 2 ML Engineer, dan UI/UX Designer).",
       },
       {
-        title: "Development · Symptom Analysis",
-        metaTags: ["random forest", "87.3% accuracy", "ml pipeline"],
+        title: "Frontend Development",
+        metaTags: ["next.js 15", "shadcn/ui", "mobile-first"],
         description:
-          "Membangun dan melatih model Random Forest untuk menganalisis gejala yang dimasukkan pengguna serta memberikan rekomendasi awal penanganan.",
+          "Membangun antarmuka web modern dengan Next.js dan TypeScript, merancang sistem design mobile-first, serta mengoptimalkan performa hingga skor Lighthouse 95+.",
       },
       {
-        title: "Milestone · Skin Disease Detection",
-        metaTags: ["computer vision", "cnn", "85.2% accuracy"],
+        title: "Backend Development",
+        metaTags: ["express.js", "supabase", "jwt auth"],
         description:
-          "Melatih model CNN untuk mendeteksi penyakit kulit kucing dari foto unggahan pengguna secara real-time.",
+          "Membangun REST API dengan Express.js untuk autentikasi & manajemen pengguna (JWT), modul edukasi, layanan lokasi veteriner, serta integrasi chatbot.",
       },
       {
-        title: "Development · Conversational AI",
-        metaTags: ["gemini 2.0", "chatbot", "integration"],
+        title: "ML · Symptom Analysis",
+        metaTags: ["random forest", "scikit-learn", "87.3% accuracy"],
         description:
-          "Mengintegrasikan Gemini 2.0 sebagai asisten percakapan 24/7 yang menjawab pertanyaan seputar kesehatan dan perawatan kucing.",
+          "Melatih model Random Forest berbasis lebih dari 25 fitur klinis untuk mengklasifikasikan 6 penyakit kucing umum dengan akurasi 87.3%.",
       },
       {
-        title: "Launch",
-        metaTags: ["deployment", "best capstone", "2025"],
+        title: "ML · Skin Disease Detection",
+        metaTags: ["cnn", "mobilenetv2", "85.2% accuracy"],
         description:
-          "Merilis platform ke production dan menyabet penghargaan Best Capstone Project pada Coding Camp 2025.",
+          "Mengembangkan model CNN MobileNetV2 yang dioptimalkan untuk perangkat mobile guna mendeteksi 6 penyakit kulit kucing dari foto, dengan waktu inferensi di bawah 50ms.",
+      },
+      {
+        title: "Chatbot & Integration",
+        metaTags: ["gemini 2.0", "vertex ai", "24/7"],
+        description:
+          "Mengintegrasikan conversational AI Gemini 2.0 melalui Google Vertex AI sebagai asisten 24/7 dengan keahlian veteriner dan dukungan Bahasa Indonesia.",
+      },
+      {
+        title: "Launch · Best Capstone",
+        metaTags: ["deployment", "google cloud", "2025"],
+        description:
+          "Men-deploy platform ke production di Vercel dan Google Cloud Run, lalu meraih penghargaan Best Capstone Project pada Coding Camp 2025.",
       },
     ],
     contentParagraphs: [
-      "Purrpal lahir dari keprihatinan akan sulitnya akses informasi dan layanan kesehatan kucing yang cepat di Indonesia. Banyak pemilik kucing yang kebingungan ketika kucingnya sakit karena keterbatasan pengetahuan dan jam operasional klinik. Purrpal hadir sebagai solusi digital yang selalu tersedia.",
-      "Dengan menggabungkan analisis gejala, pendeteksian penyakit kulit dari foto, dan asisten AI percakapan, Purrpal memberikan panduan awal yang cepat dan terukur sebelum pengguna memutuskan untuk datang ke klinik. Hal ini membantu pengambilan keputusan yang lebih tepat dan tenang.",
+      "Purrpal lahir dari keprihatinan atas sulitnya akses informasi dan layanan kesehatan kucing yang cepat di Indonesia. Klinik hewan hanya tersedia di kota besar, biaya konsultasi relatif mahal, jam operasional terbatas, dan informasi kesehatan yang reliable sulit diperoleh. Purrpal hadir sebagai solusi digital \"Dokter Hewan Digital\" yang siap membantu 24/7.",
+      "Secara arsitektur, Purrpal dibangun atas beberapa layanan yang saling terhubung: aplikasi web Next.js di sisi frontend, API Express.js yang menangani autentikasi, modul edukasi, serta integrasi chatbot, dan microservice FastAPI untuk analisis gejala (tabular) dan deteksi penyakit kulit (vision). Seluruh model AI dilatih pada tahap riset terpisah sebelum dideploy ke Google Cloud Run, dengan data tersimpan pada Supabase PostgreSQL.",
+      "Dalam tim lima orang, saya berperan sebagai UI/UX Designer — merancang sistem design end-to-end, melakukan riset & pengujian pengalaman pengguna, serta mengimplementasikan komponen antarmuka di sisi frontend. Purrpal berhasil meraih penghargaan Best Capstone Project pada Coding Camp 2025 dan menyasar lebih dari 10 juta pemilik kucing di Indonesia.",
     ],
     certificate: {
       title: "Best Capstone Project",
