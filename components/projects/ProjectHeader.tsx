@@ -12,12 +12,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
       <Container>
         <ProjectBackLink />
 
-        <span className="mt-16 inline-flex items-center gap-1.5 rounded-full border border-orange/20 bg-orange/5 px-4 py-1.5 text-xs font-semibold text-orange uppercase tracking-widest">
-          <span className="h-1.5 w-1.5 rounded-full bg-orange animate-pulse-soft inline-block" />
-          {project.tag}
-        </span>
-
-        <h1 className="mt-4 text-4xl md:text-6xl font-extrabold tracking-tight text-navy font-heading">
+        <h1 className="mt-8 text-4xl md:text-6xl font-extrabold tracking-tight text-navy font-heading">
           {project.title}
         </h1>
 

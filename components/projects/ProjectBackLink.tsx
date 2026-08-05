@@ -33,7 +33,7 @@ export function ProjectBackLink() {
     <a
       href="/#projects"
       onClick={handleClick}
-      className="group inline-flex items-center gap-2 text-sm font-semibold text-body hover:text-orange transition-colors duration-300"
+      className="group inline-flex items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-orange hover:scale-[1.03] hover:shadow-lg"
     >
       <svg
         className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1"
