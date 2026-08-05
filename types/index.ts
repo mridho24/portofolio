@@ -3,14 +3,18 @@ export interface NavLink {
   href: string
 }
 
+import type { Project as ProjectDetail } from "@/data/projects"
+
 export interface Project {
   id: string
   title: string
   description: string
   tags: string[]
-  image: string
+  image?: string
   href?: string
 }
+
+export type { ProjectDetail }
 
 export interface Service {
   id: string
