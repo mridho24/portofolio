@@ -1,6 +1,7 @@
 "use client"
 
-import { useLayoutEffect } from "react"
+import { useLayoutEffect, useEffect, useRef } from "react"
+import { usePathname } from "next/navigation"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Lenis from "lenis"
@@ -8,6 +9,14 @@ import Lenis from "lenis"
 gsap.registerPlugin(ScrollTrigger)
 
 export function AnimationsProvider({ children }: { children: React.ReactNode }) {
+  const lenisRef = useRef<Lenis | null>(null)
+  const pathname = usePathname()
+
+  useEffect(() => {
+    lenisRef.current?.scrollTo(0, { immediate: true })
+    window.scrollTo(0, 0)
+  }, [pathname])
+
   useLayoutEffect(() => {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -20,6 +29,7 @@ export function AnimationsProvider({ children }: { children: React.ReactNode }) 
       wheelMultiplier: 1,
       smoothWheel: true,
     })
+    lenisRef.current = lenis
 
     lenis.on("scroll", ScrollTrigger.update)
     gsap.ticker.add((time) => lenis.raf(time * 1000))
@@ -195,6 +205,7 @@ export function AnimationsProvider({ children }: { children: React.ReactNode }) 
     ScrollTrigger.refresh()
 
     return () => {
+      lenisRef.current = null
       ctx.revert()
       lenis.destroy()
       window.removeEventListener("load", handleRefresh)
