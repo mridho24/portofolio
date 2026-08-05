@@ -22,10 +22,12 @@ export interface Project {
   shortDescription: string
   longDescription: string
   coverImage?: string
+  mobileImage?: string
   duration: string
   client: string
   siteUrl?: string
   githubUrl: string
+  repositories?: { label: string; url: string }[]
   tags: string[]
   tech: string[]
   timeline: ProjectTimeline[]
@@ -289,45 +291,93 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "manage-inventory",
-    slug: "manage-inventory",
-    title: "Manage-Inventory",
-    subtitle: "Coffee Shop Inventory & Stock System",
-    tag: "Business / ERP",
-    gradient: "from-amber-600 via-orange-500 to-yellow-500",
+    id: "grahcoffee",
+    slug: "grahcoffee",
+    title: "GrahCoffee System",
+    subtitle: "Web & Mobile Coffee Shop Management System",
+    tag: "Full-Stack / POS",
+    gradient: "from-stone-800 via-amber-800 to-orange-600",
     num: "05",
     shortDescription:
-      "Aplikasi web modern untuk membantu pemilik kedai kopi memantau stok barang real-time (bubuk, cup, susu), manajemen transaksi stok masuk & keluar, alert low stock, serta grafik visualisasi laporan Recharts.",
+      "Sistem digital terintegrasi untuk operasional coffee shop — dashboard web untuk administrator, aplikasi mobile untuk pelanggan & absensi barcode, serta backend REST API untuk pengelolaan produk, transaksi, pengguna, dan pelaporan secara real-time.",
     longDescription:
-      "Manage-Inventory adalah aplikasi web modern untuk membantu pemilik kedai kopi mengelola inventori. Aplikasi ini menyediakan pemantauan stok barang real-time (seperti bubuk kopi, cup, dan susu), manajemen transaksi stok masuk dan keluar, notifikasi low stock, serta visualisasi laporan dalam bentuk grafik interaktif menggunakan Recharts.",
-    duration: "2025",
-    client: "Course Project",
-    githubUrl: "https://github.com/mridho24/Manage-Inventory.git",
-    tags: ["#inventory", "#erp", "#dashboard"],
-    tech: ["Next.js 15", "React 19", "Tailwind CSS v4", "TypeScript", "Recharts", "Shadcn UI"],
+      "GrahCoffee adalah sistem digital yang dikembangkan sebagai Tugas Akhir untuk mendukung operasional coffee shop secara terintegrasi melalui aplikasi web, aplikasi mobile, dan backend API. Sistem ini mencakup pengelolaan menu, transaksi, manajemen pengguna, hingga pemantauan data secara real-time. Terdiri dari tiga komponen utama: dashboard web untuk administrator (grahcoffee-frontend), aplikasi mobile untuk pelanggan sekaligus absensi barcode (grahcoffee-mobile), dan REST API sebagai pusat komunikasi data (grahcoffee-backend) yang menangani proses bisnis, autentikasi JWT, serta pengelolaan database.",
+    coverImage: "/images/GrahCoffee.png",
+    mobileImage: "/images/GrahCoffee-Mobile.jpg",
+    duration: "2026 (roadmap 10 minggu)",
+    client: "Tugas Akhir (Final Project)",
+    siteUrl: "https://grahcoffee-frontend.vercel.app",
+    githubUrl: "https://github.com/devgrahcoffee-lab/grahcoffee-frontend",
+    repositories: [
+      {
+        label: "Frontend",
+        url: "https://github.com/devgrahcoffee-lab/grahcoffee-frontend",
+      },
+      {
+        label: "Mobile",
+        url: "https://github.com/devgrahcoffee-lab/grahcoffee-mobile",
+      },
+      {
+        label: "Backend",
+        url: "https://github.com/devgrahcoffee-lab/grahcoffee-backend",
+      },
+    ],
+    tags: ["#coffee-shop", "#fullstack", "#pos", "#react-native"],
+    tech: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "React Native",
+      "Expo",
+      "Node.js",
+      "Express.js",
+      "Prisma",
+      "Supabase (PostgreSQL)",
+      "JWT",
+      "Axios",
+    ],
     timeline: [
       {
-        title: "Start",
-        metaTags: ["planning", "database design", "2025"],
+        title: "Requirement Analysis",
+        metaTags: ["analysis", "objectives", "week 1"],
         description:
-          "Merancang skema database inventori dan alur transaksi stok masuk/keluar untuk kedai kopi.",
+          "Menganalisis kebutuhan digitalisasi operasional coffee shop dan memetakan fitur untuk dashboard web, aplikasi mobile, serta backend API.",
       },
       {
-        title: "Development",
-        metaTags: ["next.js", "recharts", "crud"],
+        title: "System Design",
+        metaTags: ["architecture", "client-server", "week 2"],
         description:
-          "Membangun modul pemantauan stok real-time, alert low stock, dan grafik laporan berbasis Recharts.",
+          "Merancang arsitektur client-server dengan tiga komponen terpisah — web dashboard, mobile app, dan REST API — agar mudah dikembangkan dan diskalakan.",
       },
       {
-        title: "Launch",
-        metaTags: ["polish", "deployment"],
+        title: "Backend Development",
+        metaTags: ["node.js", "express", "jwt auth", "week 3-4"],
         description:
-          "Menyempurnakan UI dan menyiapkan aplikasi agar siap dipakai oleh pemilik usaha.",
+          "Membangun REST API dengan Node.js, Express, dan Prisma — mencakup autentikasi, user, product, category, order, payment, serta reporting API.",
+      },
+      {
+        title: "Frontend & Mobile Development",
+        metaTags: ["react", "expo", "react native", "week 5-6"],
+        description:
+          "Mengembangkan dashboard admin berbasis web (React + Tailwind) serta aplikasi mobile (React Native + Expo) untuk katalog produk, keranjang, checkout, dan absensi barcode.",
+      },
+      {
+        title: "API Integration",
+        metaTags: ["axios", "integration", "week 7"],
+        description:
+          "Mengintegrasikan seluruh layanan frontend dan mobile dengan backend API, memastikan transaksi dan pelaporan berjalan real-time.",
+      },
+      {
+        title: "Testing & Deployment",
+        metaTags: ["testing", "bug fixing", "deploy", "week 8-9"],
+        description:
+          "Melakukan pengujian, perbaikan bug, serta deployment sistem ke production hingga siap digunakan secara nyata.",
       },
     ],
     contentParagraphs: [
-      "Dibangun untuk menjawab kebutuhan sederhana namun penting pemilik usaha kecil: mengetahui stok yang hampir habis sebelum kehabisan.",
-      "Dashboard visual memudahkan pemilik kedai memahami tren pemakaian stok sehingga pengadaan barang menjadi lebih tepat waktu.",
+      "GrahCoffee bertujuan mendigitalisasi seluruh operasional coffee shop — mempermudah pemesanan produk, menyediakan dashboard administrasi, menghadirkan aplikasi mobile yang mudah digunakan, mengintegrasikan seluruh layanan lewat REST API, serta meningkatkan efisiensi pengelolaan data dan transaksi.",
+      "Arsitekturnya memisahkan tiga komponen: dashboard web untuk administrator (user management, product, category, order, reporting), aplikasi mobile untuk pelanggan (katalog produk, keranjang, checkout, riwayat pesanan, profil) plus absensi barcode, dan backend API yang menjadi pusat komunikasi data. Seluruh data tersimpan pada database Supabase — yang berbasis PostgreSQL — sehingga konsisten, relasional, dan mudah diskalakan.",
+      "Dengan desain modular dan client-server, sistem ini mudah dikembangkan dan diskalakan. Rencana pengembangan ke depan mencakup online payment gateway, push notification, loyalty program, QR order, inventory management, sales analytics, voucher & promo, hingga multi-outlet support.",
     ],
   },
 ]
